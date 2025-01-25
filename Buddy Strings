@@ -1,0 +1,49 @@
+bool buddyStrings(string s, string goal) {
+        int a=-1,b=-1;
+        char c=s[0];
+        if(s.length()<2){
+            return false;
+        }
+        if(s.length()!=goal.length()){
+            return false;
+        }
+        unordered_map<char,int> mp;
+        for(int i=0;i<s[i];i++){
+            mp[s[i]]++;
+        }
+        if(s==goal){
+            for(auto it:mp){
+                if(it.second>=2){
+                   return true;
+                }
+            }
+        }
+        bool temp=true;
+        for(int i=0;i<s.length();i++){
+            if(s[i]!=c  or goal[i]!=c){
+                temp=false;
+            }
+        }
+        int l=-1,m=-1;
+        if(temp==true){
+            return true;
+        }
+        for(int i=0;i<s.length();i++){
+            if(s[i]!=goal[i]){
+            if(a==-1){
+                a=i;
+            }
+            else{
+                b=i;
+            }
+            }
+        }
+        
+        if(a!=-1 and b!=-1){
+            swap(s[a],s[b]);
+            if(s==goal){
+                return true;
+            }
+        }
+        return false;
+    }
