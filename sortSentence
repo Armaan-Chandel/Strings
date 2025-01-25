@@ -1,0 +1,37 @@
+bool com(const pair<string,int>&a, const pair<string,int>& b){
+        return a.second<b.second;
+    }
+class Solution {
+public:
+    
+    string sortSentence(string s) {
+        //vector<int> com;
+        vector<pair<string,int>> arr;
+        int i=0;
+        string a="";
+        while (i != s.length()) {
+        if (isdigit(s[i])) {  
+            string b = "";
+            while (i < s.length() && s[i] != ' ') {  // Extract the number
+                b += s[i++];
+            }
+           // com.push_back(stoi(b));  // Store the position
+            arr.push_back({a,stoi(b)});  // Store the current word
+            a = "";
+            if(s[i]==' ' and i<s.length()){ // Reset word
+            i++; } // Skip the space after the number
+        } else {
+            a += s[i++];  // Accumulate characters for the current word
+        }
+    }
+        sort(arr.begin(),arr.end(),com);
+        string ans;
+        for(int n=0;n<arr.size();n++){
+            ans+=arr[n].first;
+            if(n!=arr.size()-1){
+                ans+=" ";
+            }
+        }
+        return ans;
+    }
+};
