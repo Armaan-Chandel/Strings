@@ -1,0 +1,57 @@
+class Solution {
+public:
+    int strStr(string s, string lol) {
+        int l=0;
+        int r=1;
+        vector<int> arr;
+        int n=lol.length();
+        int m=s.length();
+        arr.push_back(0);
+        if(s.length()<lol.length()){
+            return -1;
+        }
+        if(s.length()==lol.length()){
+            if(s==lol) return 0;
+            else{
+                return -1;
+            }
+        }
+        while(r!=n){
+            if(lol[l]==lol[r]){
+                arr.push_back(l+1);
+                l++;
+                r++;
+            }
+            else{
+                if(l==0){
+                    arr.push_back(0);
+                    r++;
+                }
+                else{
+                    l=arr[l-1];
+                }  
+            }
+        }
+        l=0;
+        r=0;
+        while(l!=m and r!=n){
+            if(s[l]==lol[r]){
+                l++;
+                r++;
+            }
+            else{
+                if(r==0){
+                  r=0;
+                  l++;
+                }
+                else{
+                    r=arr[r-1];
+                }
+            }
+        }
+        if(r!=n){
+            return -1;
+        }
+        return l-r;
+    }
+};
