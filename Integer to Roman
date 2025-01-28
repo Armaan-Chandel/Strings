@@ -1,0 +1,64 @@
+class Solution {
+public:
+    string intToRoman(int num) {
+        string s=to_string(num);
+        
+        int n=s.length();
+        char a;
+        char b;
+        char v;
+        string ans="";
+        for(int i=0;i<s.length();i++){
+            int d=n-i;
+            int p=s[i]-'0';
+            if(d==4){
+                a='M';
+            }
+            else if(d==3){
+                a='C';
+                v='D';
+                b='M';
+            }
+            else if(d==2){
+                a='X';
+                v='L';
+                b='C';
+            }
+            else{
+                a='I';
+                v='V';
+                b='X';
+            }
+            if(p<=3){
+                while(p!=0){
+                    ans+=a;
+                    p--;
+                }
+            }
+            else if(p==5){
+                ans+=v;
+                continue;
+            }
+            else if(p==4){
+                ans+=a;
+                ans+=v;
+                continue;
+            }
+            else if(p==9){
+                ans+=a;
+                ans+=b;
+                continue;
+            }
+            else{
+                int k=p-5;
+                ans+=v;
+
+                while(k!=0){
+                   ans+=a;
+                   k--;
+                }
+            }
+        }
+        return ans;
+    }
+};
