@@ -1,0 +1,29 @@
+ string longestPrefix(string s) {
+        vector<int> arr;
+        int l=0;
+        int r=1;
+        arr.push_back(0);
+        
+        while(r!=s.length()){
+            if(s[l]==s[r]){
+                arr.push_back(l+1);
+                l++;
+                r++;
+            }
+            else{
+                if(l==0){
+                    arr.push_back(0);
+                    r++;
+                }
+                else{
+                    l=arr[l-1];
+                }
+            }
+        }
+        int o=arr[s.length()-1];
+        string ans="";
+        for(int i=0;i<o;i++){
+            ans+=s[i];
+        }
+        return ans;
+    }
