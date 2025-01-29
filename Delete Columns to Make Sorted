@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minDeletionSize(vector<string>& arr) {
+        int count=0;
+        for(int i=0;i<arr[0].size();i++){
+            string a="";
+            string b="";
+            for(int j=0;j<arr.size();j++){
+                a+=arr[j][i];
+                b+=arr[j][i];
+            }
+            for(int k=0;k<a.length()-1;k++){
+                if(a[k]<=a[k+1]){
+                    count=count;
+                }
+                else{
+                    count++;
+                    break;
+                }
+            }
+           
+        }
+        return count;
+
+    }
+};
