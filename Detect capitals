@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        string low="";
+        for(int i=0;i<word.length();i++){
+            char a=tolower(word[i]);
+            low+=a;
+
+        }
+        if(low==word){
+            return true;
+        }
+        low="";
+        for(int i=0;i<word.length();i++){
+            char a=toupper(word[i]);
+            low+=a;
+        }
+        if(low==word){
+            return true;
+        }
+        char c=word[0];
+        string lol="";
+        for(int i=1;i<word.length();i++){
+            lol+=word[i];
+        }
+        low="";
+        for(int i=1;i<word.length();i++){
+            char c=tolower(word[i]);
+            low+=c;
+        }
+        
+        cout<<low<<endl;
+        cout<<lol<<endl;
+        cout<<c;
+        if((int)(c)<=90 and low==lol){
+            return true;
+        }
+        return false;
+    }
+};
